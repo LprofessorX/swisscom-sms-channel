@@ -16,7 +16,7 @@ class SwisscomClient
     /**
      * @var string
      */
-    protected $endpoint = '';
+    protected $endpoint = 'https://api.swisscom.com/messaging/sms';
 
     /**
      * @var string
