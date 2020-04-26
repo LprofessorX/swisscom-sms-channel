@@ -1,5 +1,3 @@
-Please see [this repo](https://github.com/laravel-notification-channels/channels) for instructions on how to submit a channel proposal.
-
 # Swisscom SMS Notification Channel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/swisscom.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/swisscom)
