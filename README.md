@@ -13,10 +13,6 @@ This package makes it easy to send notifications using [Swisscom's SMS API](http
 
 **Note:** Replace ```:style_ci_id``` ```:sensio_labs_id``` with their correct values
 
-This is where your description should go. Add a little code example so build can understand real quick how the package can be used. Try and limit it to a paragraph or two.
-
-
-
 ## Contents
 
 - [Installation](#installation)
