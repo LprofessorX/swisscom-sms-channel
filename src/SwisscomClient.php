@@ -6,6 +6,7 @@ namespace NotificationChannels\Swisscom;
 
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ConnectException;
 use NotificationChannels\Swisscom\Exceptions\CouldNotSendNotification;
@@ -29,21 +30,27 @@ class SwisscomClient
     protected $defaultSender;
 
     /**
+     * @var ClientInterface
+     */
+    protected $httpClient;
+
+    /**
      * SwisscomClient constructor
      * @param string $apiKey
      * @param string|null $defaultSender
+     * @param ClientInterface|null $client
      */
-    public function __construct(string $apiKey, string $defaultSender = null)
+    public function __construct(string $apiKey, string $defaultSender = null, ClientInterface $client = null)
     {
         $this->apiKey = $apiKey;
         $this->defaultSender = $defaultSender;
+        $this->httpClient = $client ?? new Client();
     }
 
     public function send(string $receiver, string $message, string $sender = null, string $callback = null)
     {
         try {
-            $client = new Client();
-            $response = $client->post($this->endpoint, [
+            $response = $this->httpClient->post($this->endpoint, [
                 'headers' => $this->getRequestHeaders(),
                 'json' => [
                     'from' => $sender ?? $this->defaultSender,
