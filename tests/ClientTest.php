@@ -37,8 +37,7 @@ class ClientTest extends TestCase
                 'json' => [
                     'from' => $sender,
                     'to' => $receiver,
-                    'text' => $text,
-                    'callbackUrl' => ''
+                    'text' => $text
                 ]
             ])->once()->andReturnTrue();
 
@@ -65,8 +64,7 @@ class ClientTest extends TestCase
                 'json' => [
                     'from' => $passedSender,
                     'to' => $receiver,
-                    'text' => $text,
-                    'callbackUrl' => ''
+                    'text' => $text
                 ]
             ])->once()->andReturnTrue();
 

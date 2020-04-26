@@ -61,12 +61,12 @@ class SwisscomClient
         try {
             $response = $this->httpClient->post($this->endpoint, [
                 'headers' => $this->getRequestHeaders(),
-                'json' => [
+                'json' => array_filter([
                     'from' => $sender ?? $this->defaultSender,
                     'to' => $receiver,
                     'text' => $message,
                     'callbackUrl' => $callback ?? ''
-                ]
+                ])
             ]);
         } catch (BadResponseException $e) {
             // The API responded with 4XX or 5XX error
