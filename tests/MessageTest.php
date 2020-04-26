@@ -23,7 +23,7 @@ class MessageTest extends TestCase
     {
         $text = 'My awesome SMS content';
 
-        $message = (new SwisscomMessage())->content($text);
+        $message = (new SwisscomMessage())->text($text);
         $this->assertEquals($text, $message->content);
     }
 
@@ -71,7 +71,7 @@ class MessageTest extends TestCase
     {
         $receiver = '+41791234567';
 
-        $message = (new SwisscomMessage())->receiver($receiver);
+        $message = (new SwisscomMessage())->to($receiver);
         $this->assertEquals($receiver, $message->receiver);
     }
 }

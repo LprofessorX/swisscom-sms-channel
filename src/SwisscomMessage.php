@@ -38,7 +38,7 @@ class SwisscomMessage
      * @param string $content
      * @return $this
      */
-    public function content(string $content)
+    public function text(string $content)
     {
         $this->content = $content;
         return $this;
@@ -60,7 +60,7 @@ class SwisscomMessage
      * @param string $receiver
      * @return $this
      */
-    public function receiver(string $receiver)
+    public function to(string $receiver)
     {
         $this->receiver = $receiver;
         return $this;
