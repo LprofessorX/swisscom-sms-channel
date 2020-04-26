@@ -13,7 +13,7 @@ class SwisscomChannel
     protected $client;
 
     /**
-     * SwisscomChannel constructor.
+     * SwisscomChannel constructor
      * @param SwisscomClient $client
      */
     public function __construct(SwisscomClient $client)
@@ -22,7 +22,7 @@ class SwisscomChannel
     }
 
     /**
-     * Send the given notification.
+     * Send the given notification
      *
      * @param mixed $notifiable
      * @param Notification $notification

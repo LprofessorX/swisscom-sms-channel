@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class SwisscomServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
-     * Register the application services.
+     * Register the application services
      */
     public function register()
     {
@@ -21,7 +21,7 @@ class SwisscomServiceProvider extends ServiceProvider implements DeferrableProvi
     }
 
     /**
-     * Get the services provided by the provider.
+     * Get the services provided by the provider
      *
      * @return array
      */

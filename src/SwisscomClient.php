@@ -47,6 +47,15 @@ class SwisscomClient
         $this->httpClient = $client ?? new Client();
     }
 
+    /**
+     * Send the API request
+     * @param string $receiver
+     * @param string $message
+     * @param string|null $sender
+     * @param string|null $callback
+     * @return bool
+     * @throws CouldNotSendNotification
+     */
     public function send(string $receiver, string $message, string $sender = null, string $callback = null)
     {
         try {
