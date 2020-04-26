@@ -34,19 +34,77 @@ This is where your description should go. Add a little code example so build can
 
 ## Installation
 
-Please also include the steps for any third-party service setup that's required for this package.
+Install the package using composer:
+
+```
+composer require laravel-notification-channels/swisscom
+```
+
+Add the configuration to your services.php config file:
+
+```php
+'swisscom' => [
+    'key' => env('SWISSCOM_KEY'),
+    'from' => env('SWISSCOM_FROM'),
+]
+```
 
 ### Setting up the Swisscom SMS service
 
-Optionally include a few steps how users can set up the service.
+To get the necessary key you'll need to sign-up for an SMS plan using [Swisscom's Digital Marketplace](https://digital.swisscom.com/products/text-messaging/info).
+After signing up head over to your subscriptions and extract the "customer key" under "Applications".
+
+Depending on your selected plan you have the option to use custom sender names (`from` config).
+The fallback sender value and default for entry plans is your within Swisscom registered mobile phone number. 
 
 ## Usage
 
-Some code examples, make it clear how to use the package
+Within your notification you need to add the Swisscom SMS channel to your `via()` method and configure the message using the `toSwisscom()` method:
+
+```php
+use Illuminate\Notifications\Notification;
+use NotificationChannels\Swisscom\SwisscomChannel;
+use NotificationChannels\Swisscom\SwisscomMessage;
+
+class SignedUp extends Notification
+{
+    public function via($notifiable)
+    {
+        return [SwisscomChannel::class];
+    }
+
+    public function toSwisscom($notifiable)
+    {
+        // Easiest way
+        return 'My awesome SMS message';
+    
+        // Classic way
+        return new SwisscomMessage('My awesome SMS message');
+        
+        // Advanced options
+        return (new SwisscomMessage)
+            ->text('My awesome SMS message')
+            ->from('Acme Ltd.')
+            ->to('+41791234567')
+            ->callback('https://my-app.com/delivery-callback')
+    }
+}
+```
+
+Note on advanced options:
+- If you don't provide a **sender** name/number using `from()` then the config option `services.swisscom.from` will be used
+- If you don't provide a **receiver** number using `to()` in your notification please add a `routeNotificationForSwisscom()` method to your notifiable model
+
 
 ### Available Message methods
 
-A list of all available options
+`text()`: Sets the message content of the SMS
+
+`from()`: Sets the SMS sender name/number (overwrites the configured sender in services.php)
+
+`to()`: Sets the SMS receiver number (overwrites return value of `routeNotificationForSwisscom()` in notifiable model)
+
+`callback()`: Sets the callback URL for delivery notifications according to [Swisscom's API spec](https://digital.swisscom.com/products/text-messaging/documentation)
 
 ## Changelog
 
