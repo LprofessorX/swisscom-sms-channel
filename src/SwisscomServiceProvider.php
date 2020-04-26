@@ -1,10 +1,10 @@
 <?php
 
-namespace NotificationChannels\:channel_namespace;
+namespace NotificationChannels\Swisscom;
 
 use Illuminate\Support\ServiceProvider;
 
-class :service_nameServiceProvider extends ServiceProvider
+class SwisscomServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.

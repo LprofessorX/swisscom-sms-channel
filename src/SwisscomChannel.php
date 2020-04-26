@@ -1,11 +1,11 @@
 <?php
 
-namespace NotificationChannels\:channel_namespace;
+namespace NotificationChannels\Swisscom;
 
-use NotificationChannels\:channel_namespace\Exceptions\CouldNotSendNotification;
 use Illuminate\Notifications\Notification;
+use NotificationChannels\Swisscom\Exceptions\CouldNotSendNotification;
 
-class :service_nameChannel
+class SwisscomChannel
 {
     public function __construct()
     {
@@ -16,9 +16,9 @@ class :service_nameChannel
      * Send the given notification.
      *
      * @param mixed $notifiable
-     * @param \Illuminate\Notifications\Notification $notification
+     * @param Notification $notification
      *
-     * @throws \NotificationChannels\:channel_namespace\Exceptions\CouldNotSendNotification
+     * @throws CouldNotSendNotification
      */
     public function send($notifiable, Notification $notification)
     {
